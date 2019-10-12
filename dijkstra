@@ -1,0 +1,57 @@
+struct vertex
+{
+    string key;
+    vector<edge> edges;
+    bool solved;
+    int distance; //total distance from starting vertex
+    vertex * parent; //for retracing steps
+};
+
+struct edge
+{
+    int weight;
+    vertex *v;
+};
+
+/////need a add function... to add a node to a "sovled list"
+////need a solved list function.....which take in a interger and return a vertex..?
+
+vertex Graph::Dijkstra(start, end){
+    //given start and end vertices, find shortest path and return ending vertex
+    vStart = findVertex(Start);  //could be out findVertex function that we already have
+    vEnd = findVertex(end);
+    vStart.solved = true; // part of the vertex struct
+    //create a list to store solved vertices  must also...
+    //...creat a add function that take in a vertex
+
+    solvedList.add(vStart); ///WHERE DID THIS COME FROM???
+
+    while(!vEnd.solved){ ///while the end node is still false
+        //set a min distance to some huge value
+        float minDist = INT_MAX;
+        //pointer to keep track of solved nodes
+        vertex *solvedV = NULL;
+        //iterate across list of solved vertice
+        for(int x = 0; x < solvedList.end; x++){
+
+            vertex *s = solvedList(x); ////WHAT DOES THIS DO???
+
+            for(int y = 0; y < s.edges.end; y++){
+                if (!s.edges[y].v.solved){
+                    //calculate distance from vStart to this node
+                    float dist = s.distance + s.edges[y].weight;
+                    //check if dist is < smallest distance found so far
+                    if(dist < minDist){
+                        solvedV = s.edges[y].v;/// ???
+                        minDist = dist;
+                        s.edges[y].parent = s; /// ????
+                    }
+                }
+            }
+        }
+        solvedV.distance = minDist;
+        solvedV.parent = parent;
+        solvedV.solved = true;
+        solvedList.add(solvedV);
+    }
+}

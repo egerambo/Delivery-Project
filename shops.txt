@@ -1,0 +1,7 @@
+Shops,Safe Way,Walmart,Fat Shack,Shell,KFC
+Safe Way,0,2,15,-1,-1
+Walmart,2,0,10,-1,8
+Fat Shack,15,10,0,5,-1
+Shell,-1,-1,5,0,-1
+KFC,-1,8,-1,-1,0
+
